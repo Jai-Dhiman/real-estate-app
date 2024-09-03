@@ -1,5 +1,11 @@
 class HomeController < ApplicationController
   def index
-    render json: { message: "hello" }
+    @homes = Home.all
+    render template: "homes/index"
+  end
+
+  def show
+    @home = Home.find_by(id: params[":id"])
+    render template: "homes/show"
   end
 end
